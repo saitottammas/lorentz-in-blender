@@ -31,7 +31,7 @@ b=8/3
 r=28
 dt=0.01 #微分間隔　0.1にするとぼんやりした画像に
 
-tmax=1000 #繰り返し回数　最初は100ぐらいで試すほうが無難
+tmax=5000 #繰り返し回数　最初は100ぐらいで試すほうが無難
 X=Y=Z=1.0
 bpy.ops.mesh.primitive_ico_sphere_add(subdivisions = 1, size = 0.2, location = (X,Y,Z))
 
