@@ -1,6 +1,6 @@
 import bpy
 
-#ウィンドウ上のオブジェクトを一度削除
+#Delete existing Objects ウィンドウ上のオブジェクトを一度削除
 for item in bpy.context.scene.objects:
     if item.type == 'MESH':
         bpy.context.scene.objects.unlink(item)
@@ -12,7 +12,7 @@ for item in bpy.data.meshes:
 for item in bpy.data.materials:
      bpy.data.materials.remove(item)
 
-#ローレンツの微分方程式を３つ定義
+#Lorentz equation ローレンツの微分方程式を３つ定義
 def fx(xx,yy,zz):
  q=-s*xx+s*yy
  return q
@@ -25,17 +25,17 @@ def fz(xx,yy,zz):
  q=-b*zz+xx*yy
  return q
  
-#初期定数設定
+#Initial Value 初期定数設定
 s=10
 b=8/3
 r=28
-dt=0.01 #微分間隔　0.1にするとぼんやりした画像に
+dt=0.01 #dt- you can change this number, try 0.1 etc 微分間隔　0.1にするとぼんやりした画像に
 
-tmax=5000 #繰り返し回数　最初は100ぐらいで試すほうが無難
+tmax=5000 #If your machine is weak, try 100 etc. at first 繰り返し回数　最初は100ぐらいで試すほうが無難
 X=Y=Z=1.0
 bpy.ops.mesh.primitive_ico_sphere_add(subdivisions = 1, size = 0.2, location = (X,Y,Z))
 
-#ルンゲクッタ法による微分方程式の解の近似値を求めて描画
+#Runge–Kutta method ルンゲクッタ法による微分方程式の解の近似値を求めて描画
 for i in range(0,tmax):
  d1x=dt*fx(X,Y,Z)
  d1y=dt*fy(X,Y,Z)
